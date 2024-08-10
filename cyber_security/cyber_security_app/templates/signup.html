@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | CyberGuardians</title>
+    <script>
+        function Submit() {
+            const inputmail = document.getElementById('inputmail').value
+            const inputpass = document.getElementById('inputpass').value
+
+
+            if (inputmail.length < 1) {
+                document.getElementById('inputmail').style.borderColor = "red";
+                alert('Please enter an email')
+
+            }
+
+            if (inputpass.length < 1) {
+                document.getElementById('inputpass').style.borderColor = "red";
+                alert('Please enter a password')
+
+            }
+
+            else if (inputmail.includes("@gmail.com")) {
+                localStorage.setItem("email", inputmail)
+                localStorage.setItem("password", inputpass)
+                alert("Thanks for signing up! we will get back to you shortly.")
+                location.replace("{% url 'home' %}");
+            }
+
+            else if (inputmail.includes("@yahoo.com")) {
+                localStorage.setItem("email", inputmail)
+                localStorage.setItem("password", inputpass)
+                alert("Thanks for signing up! we will get back to you shortly.")
+                location.replace("{% url 'home' %}");
+            }
+
+            else if (inputmail.includes("@hotmail.com")) {
+                localStorage.setItem("email", inputmail)
+                localStorage.setItem("password", inputpass)
+                alert("Thanks for signing up! we will get back to you shortly.")
+                location.replace("{% url 'home' %}");
+            }
+
+            else if (inputmail.includes("@outlook.com")) {
+                localStorage.setItem("email", inputmail)
+                localStorage.setItem("password", inputpass)
+                alert("Thanks for signing up! we will get back to you shortly.")
+                location.replace("{% url 'home' %}");
+            }
+
+            else if (inputmail.includes("@sfhs.in")) {
+                localStorage.setItem("email", inputmail)
+                localStorage.setItem("password", inputpass)
+                alert("Thanks for signing up! we will get back to you shortly.")
+                location.replace("{% url 'home' %}");
+            }
+
+            else {
+                document.getElementById('inputmail').style.borderColor = "red";
+                alert('Please enter a valid email')
+
+            }
+
+        }
+
+        function seepass() {
+            var password = document.getElementById("inputpass");
+
+            if (password.type === "password") {
+                password.type = "text"
+            }
+
+            else {
+                password.type = "password"
+            }
+        }
+
+        function email() {
+            const inputmail = document.getElementById('inputmail').value
+            const inputpass = document.getElementById('inputpass').value
+            const p1 = document.getElementById('p1')
+
+            if (inputmail.includes("@gmail.com")) {
+                document.getElementById('inputmail').style.borderColor = "lime";
+            }
+
+            else if (inputmail.includes("@yahoo.com")) {
+                document.getElementById('inputmail').style.borderColor = "lime";
+            }
+
+            else if (inputmail.includes("@hotmail.com")) {
+                document.getElementById('inputmail').style.borderColor = "lime";
+            }
+
+            else if (inputmail.includes("@outlook.com")) {
+                document.getElementById('inputmail').style.borderColor = "lime";
+            }
+
+            else if (inputmail.includes("@sfhs.in")) {
+                document.getElementById('inputmail').style.borderColor = "lime";
+            }
+
+            else {
+                document.getElementById('inputmail').style.borderColor = "red";
+                alert('Please enter a valid email')
+                p1.style.visibility = "visible"
+
+            }
+        }
+
+        function pass() {
+            const inputmail = document.getElementById('inputmail').value
+            const inputpass = document.getElementById('inputpass').value
+            const p1 = document.getElementById('p1')
+            const btn = document.getElementById('btnsub')
+
+            if (inputpass.length < 8) {
+                btn.disabled = true;
+                document.getElementById('inputpass').style.borderColor = "red";
+                alert('Password should contain atleast 8 characters');
+            }
+
+            else {
+                document.getElementById('inputpass').style.borderColor = "lime";
+                btn.disabled = false;
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    
+        <form method="POST" action="{% url 'sign1' %}">
+        {% csrf_token %}
+        <div class="div1">
+        <h2 class="h21" style="position: absolute; top: 0px; font-size: 30px">Sign Up</h2>
+        <input type="email" class="mail-input" id="inputmail" placeholder="Email" onchange="email()" name="email" required><br><br>
+        <input type="password" class="Password-input" id="inputpass" placeholder="Password" onchange="pass()" name="password" required>
+       <button type="submit" id="btnsub">Submit</button><br><br><br><br><br><br><br><br><br><br>
+        <p id="p1">Note: *We only accept SFHS, Yahoo, Gmail, Outlook and Hotmail as valid domains*</p>
+        <p onclick="seepass()" class="eye">&#x1F441</p>    </div>
+    </form>
+
+
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+
+    body {
+        font-family: 'Ubuntu', sans-serif;
+        background-image:  url("https://c4.wallpaperflare.com/wallpaper/66/330/336/rain-city-street-waterdrop-wallpaper-preview.jpg");
+    }
+
+    .eye {
+        position: absolute;
+        top: 99px;
+        left: 365px;
+        cursor: pointer;
+        display: flex;
+        border-radius: 50%;
+        width: 27px;
+        height: 27px;
+        justify-content: center;
+        transition: 0.5s;
+    }
+
+    .eye:hover {
+        background-color: gray;
+        transition: 0.5s;
+
+    }
+
+
+    #p1 {
+        color: red;
+        font-size: 10px;
+        visibility: hidden;
+    }
+
+    .div1 {
+        width: 522px;
+        height: 270px;
+        border-radius: 6px;
+        padding: 16px;
+        box-shadow: 2px 5px 8px 10px #888888;
+        background-color: white;
+        position: absolute;
+        top: 20%;
+        left: 30%;
+    }
+
+    .mail-input {
+        position: absolute;
+        top: 61px;
+        left: 171px;
+        height: 30px;
+        width: 180px;
+        border-radius: 4px;
+        border: 2px solid black;
+    }
+
+    .Password-input {
+        position: absolute;
+        top: 109px;
+        left: 171px;
+        height: 30px;
+        width: 180px;
+        border-radius: 4px;
+        border: 2px solid black;
+    }
+
+    .see-pass {
+        position: absolute;
+        top: 106px;
+        left: 393px;
+        width: 100px;
+        height: 30px;
+        border: none;
+        background-color: black;
+        color: white;
+        border-radius: 4px;
+        transition: 0.5s;
+    }
+
+    .see-pass:hover {
+        box-shadow: 1px 1px 1px 1px #888888;
+        transition: 0.5s;
+    }
+
+    #btnsub {
+        position: absolute;
+        top: 158px;
+        left: 171px;
+        width: 100px;
+        height: 40px;
+        border: none;
+        background-color: black;
+        color: white;
+        border-radius: 4px;
+        transition: 0.5s;
+    }
+
+    #btnsub:hover {
+        box-shadow: 1px 1px 1px 1px #888888;
+        transition: 0.5s;
+    }
+</style>
+
+</html>

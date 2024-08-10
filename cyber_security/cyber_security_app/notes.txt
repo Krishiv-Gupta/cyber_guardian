@@ -1,0 +1,10 @@
+Questions to determine security of device-
+1. How much slower has your device become since you first started using it?
+2. Do you use your personal details (name, birthday, etc) as your password?
+3. Do you find your computer crashing or freezing at random moments?
+
+1 = 1/5*100 = 20
+2 = 2/5*100 = 40
+60
+80
+100
